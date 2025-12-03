@@ -339,9 +339,7 @@ SQL Query:"""
                 messages=[
                     {"role": "system", "content": "You are a SQL expert that converts natural language to DuckDB SQL queries."},
                     {"role": "user", "content": prompt}
-                ],
-                temperature=0.1,
-                max_tokens=500
+                ]
             )
             
             # Extract SQL from response
