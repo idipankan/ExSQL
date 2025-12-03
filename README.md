@@ -62,14 +62,14 @@ pip install pyinstaller
 ### 2. Build the Executable
 
 ```bash
-pyinstaller --onefile --windowed --name "ExcelSQLTransformer" main.py
+pyinstaller --onefile --windowed --name "ExSQL" main.py
 ```
 
 ### 3. Locate the Executable
 
 The `.exe` file will be in the `dist/` folder:
 ```
-dist/main.exe
+dist/ExSQL.exe
 ```
 
 ### PyInstaller Options Explained
