@@ -10,6 +10,54 @@ A desktop application that allows you to load Excel files, query them using SQL 
 - Export results to Excel or CSV
 - Support for latest OpenAI models (GPT-5-mini, GPT-5-nano, GPT-4.1-mini)
 
+## Component Flow Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant GUI
+    participant App State
+    participant DuckDB
+    participant OpenAI
+    participant FileSystem
+    
+    %% Load File Flow
+    User->>GUI: Load Excel File
+    GUI->>FileSystem: Read Excel
+    FileSystem-->>App State: Store DataFrame
+    App State->>DuckDB: Register Table
+    App State->>GUI: Display Data
+    
+    %% Configure OpenAI Flow
+    User->>GUI: Enter API Key & Model
+    GUI->>App State: Save Configuration
+    App State->>OpenAI: Validate API Key
+    OpenAI-->>App State: Validation Success
+    App State->>GUI: Show Success Message
+    
+    %% Generate SQL Flow
+    User->>GUI: Enter Question
+    User->>GUI: Click Generate SQL
+    GUI->>App State: Get Table Metadata
+    App State->>App State: Create Prompt
+    App State->>OpenAI: Send Prompt
+    OpenAI-->>App State: Return SQL Query
+    App State->>App State: Clean Response
+    App State->>GUI: Insert SQL into Editor
+    
+    %% Execute SQL Flow
+    User->>GUI: Click Transform
+    GUI->>DuckDB: Execute SQL Query
+    DuckDB-->>App State: Query Results
+    App State->>GUI: Display Results
+    
+    %% Export Flow
+    User->>GUI: Click Export
+    GUI->>FileSystem: Write Excel/CSV
+    FileSystem-->>GUI: Export Success
+```
+
+
 ## Installation
 
 ### Prerequisites
