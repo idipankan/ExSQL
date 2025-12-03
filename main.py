@@ -290,18 +290,19 @@ class ExcelSQLApp:
         
         prompt = f"""You are a SQL expert. Convert the following natural language question into a DuckDB SQL query.
 
-Table name: {self.table_name}
-Columns: {columns_str}
+            Table name: {self.table_name}
+            Columns: {columns_str}
 
-Question: {question}
+            Question: {question}
 
-IMPORTANT:
-- Return ONLY the SQL query, no explanations or markdown formatting
-- Use DuckDB SQL syntax
-- The table name is '{self.table_name}'
-- Do not include any text before or after the SQL query
+            IMPORTANT:
+            - Return ONLY the SQL query, no explanations or markdown formatting
+            - Use DuckDB SQL syntax
+            - The table name is '{self.table_name}'
+            - Do not include any text before or after the SQL query
 
-SQL Query:"""
+            SQL Query:
+        """
         
         return prompt
     
