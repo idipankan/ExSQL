@@ -1,4 +1,4 @@
-# Excel SQL Transformer
+# ExSQL Transformer
 
 A desktop application that allows you to load Excel files, query them using SQL (DuckDB), and generate SQL queries from natural language questions using OpenAI.
 
